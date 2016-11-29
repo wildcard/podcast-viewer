@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { index, podcastsNames, getResults, getAll } from './search';
-import JSONTree from 'react-json-tree'
 import AppBar from 'material-ui/AppBar';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
