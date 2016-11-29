@@ -8,6 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {GridList, GridTile} from 'material-ui/GridList';
 import RssFeed from 'material-ui/svg-icons/communication/rss-feed';
 import IconButton from 'material-ui/IconButton';
+import IconOpenNew from 'material-ui/svg-icons/action/open-in-new';
 
 class App extends Component {
   constructor(props){
@@ -36,24 +37,30 @@ class App extends Component {
           hintText="Search by podcast name"
           dataSource={podcastsNames}
           onUpdateInput={this.handleUpdateInput.bind(this)}
-          floatingLabelText="Podcast Name"
           fullWidth={true}
         />
         </AppBar>
         <div className="App-header">
-          <h2>Welcome to iTunes Arts podcasts offline index</h2>
+          <h2>Welcome to iTunes Popular Arts podcasts offline index</h2>
           {/*<JSONTree data={this.state.data} />*/}
         </div>
-        <GridList cols={2} cellHeight={200} padding={1}>
+        <GridList cols={4} cellHeight={200} padding={0}>
       {this.state.searchResults.map((podcast) => (
         <GridTile
           key={podcast.id}
           title={podcast.name}
+          subtitle={`Rating: ${podcast.contentAdvisoryRating}`}
           actionPosition="left"
           titlePosition="bottom"
-          actionIcon={<IconButton tooltip="RSS Feed" href={podcast.feedUrl}>
-              <RssFeed color={'#ff6600'}/>
-            </IconButton>}
+          actionIcon={<div>
+            <IconButton tooltip="RSS Feed" tooltipPosition="top-center" href={podcast.feedUrl}>
+              <RssFeed color="#ff6600"/>
+            </IconButton>
+            <IconButton tooltip="podcast link" tooltipPosition="top-center" href={podcast.trackViewUrl}>
+              <IconOpenNew color="#fff"/>
+            </IconButton>
+          </div>
+          }
           cols={(podcast.score * 100) > 50 ? 2 : 1}
           rows={(podcast.score * 100) > 50 ? 2 : 1}
         >

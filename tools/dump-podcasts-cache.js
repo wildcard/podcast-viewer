@@ -20,7 +20,7 @@ function lookupPodcastData(podcastsMap, outputMap) {
 
   return podcastsIds.map((id) => {
     return new Promise(function (fulfill, reject) {
-      searchitunes({ id }, (err, data) => {
+      searchitunes({ id, country: 'IL', }, (err, data) => {
         if (err) {
           console.log(err);
           reject(err);
