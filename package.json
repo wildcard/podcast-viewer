@@ -1,0 +1,27 @@
+{
+  "name": "podcast-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "commander": "^2.9.0",
+    "itunes-api-search": "^1.0.3",
+    "jsonfile": "^2.4.0",
+    "prettyjson": "^1.2.0",
+    "react-scripts": "0.7.0",
+    "searchitunes": "^2.3.2"
+  },
+  "dependencies": {
+    "lunr": "^0.7.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dump": "node ./tools/dump-podcasts-cache.js",
+    "index": "node ./tools/build-itunes-index.js"
+  }
+}
