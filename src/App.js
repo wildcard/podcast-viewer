@@ -6,6 +6,8 @@ import AppBar from 'material-ui/AppBar';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {GridList, GridTile} from 'material-ui/GridList';
+import RssFeed from 'material-ui/svg-icons/communication/rss-feed';
+import IconButton from 'material-ui/IconButton';
 
 class App extends Component {
   constructor(props){
@@ -31,10 +33,10 @@ class App extends Component {
         <AppBar title="Title"
           iconClassNameRight="muidocs-icon-navigation-expand-more">
           <AutoComplete
-          hintText="Type anything"
+          hintText="Search by podcast name"
           dataSource={podcastsNames}
           onUpdateInput={this.handleUpdateInput.bind(this)}
-          floatingLabelText="Full width"
+          floatingLabelText="Podcast Name"
           fullWidth={true}
         />
         </AppBar>
@@ -48,10 +50,12 @@ class App extends Component {
           key={podcast.id}
           title={podcast.name}
           actionPosition="left"
-          titlePosition="top"
-          titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-          cols={(podcast.score * 100) > 90 ? 2 : 1}
-          rows={(podcast.score * 100) > 90 ? 2 : 1}
+          titlePosition="bottom"
+          actionIcon={<IconButton tooltip="RSS Feed" href={podcast.feedUrl}>
+              <RssFeed color={'#ff6600'}/>
+            </IconButton>}
+          cols={(podcast.score * 100) > 50 ? 2 : 1}
+          rows={(podcast.score * 100) > 50 ? 2 : 1}
         >
           <img src={podcast.artworkUrl600} alt={podcast.name}/>
         </GridTile>
