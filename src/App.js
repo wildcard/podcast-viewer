@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { index, podcastsNames, getResults } from './search';
+import { index, podcastsNames, getResults, getAll } from './search';
 import JSONTree from 'react-json-tree'
 import AppBar from 'material-ui/AppBar';
 import AutoComplete from 'material-ui/AutoComplete';
@@ -14,8 +14,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data: [],
-      searchResults: []
+      searchResults: getAll()
     };
   }
 
@@ -42,7 +41,6 @@ class App extends Component {
         </AppBar>
         <div className="App-header">
           <h2>Welcome to iTunes Popular Arts podcasts offline index</h2>
-          {/*<JSONTree data={this.state.data} />*/}
         </div>
         <GridList cols={4} cellHeight={200} padding={0}>
       {this.state.searchResults.map((podcast) => (
